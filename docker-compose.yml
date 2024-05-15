@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: library-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: library
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    networks:
+        - maid-library-network
+
+networks:
+  maid-library-network:
+    name: maid-library-network
+    driver: bridge
